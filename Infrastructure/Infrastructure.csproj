@@ -2,6 +2,7 @@
 
 <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.20" />
+    <PackageReference Include="Net.Json.Serializer" Version="6.0.0" />
 </ItemGroup>
 
   <ItemGroup>
