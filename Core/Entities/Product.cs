@@ -2,13 +2,13 @@ namespace Core.Entities
 {
     public class Product : BaseEntitiy
     {
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public String Description { get; set; }
+        public string Description { get; set; }
 
         public decimal Price { get; set; }
 
-        public int PictureUrl { get; set; }
+        public string PictureUrl { get; set; }
 
         public ProductType ProductType { get; set; }
 

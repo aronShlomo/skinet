@@ -1,9 +1,7 @@
-
-
-namespace Core
+namespace Core.Entities
 {
     public class BaseEntitiy
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }
