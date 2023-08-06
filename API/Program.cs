@@ -17,7 +17,8 @@ opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultString"));
 });
 
 builder.Services.AddScoped<iProductRepository, ProductRepository>();
-
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
@@ -28,11 +29,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
