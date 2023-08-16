@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Errors;
 using Core.Interfaces;
 using Infrastructure;
@@ -44,6 +40,15 @@ namespace API.Extentions
                 return new BadRequestObjectResult(errorResponse);
             };
 });
+
+          Services.AddCors(opt => 
+          {
+            opt.AddPolicy("CorsPolicy", policy =>
+           {
+             policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+           });
+          });
+
 
             return Services;
         }

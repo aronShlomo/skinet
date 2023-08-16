@@ -6,6 +6,7 @@ using API.Dtos;
 using AutoMapper;
 using API.Controllers;
 using API.Errors;
+using API.Helpers;
 
 namespace Infrastructure.Controllers
 {
@@ -27,6 +28,22 @@ namespace Infrastructure.Controllers
         } 
 
 
+   [HttpGet]
+        public async Task<ActionResult<Pagniation<ProductToReturnDtos>>> GetProducts([FromQuery]ProductSpecParams productSpecParams)
+        {
+               var spec = new ProductWithTypesAndBrandsSpecification(productSpecParams);
+
+               var countSpec = new ProductWithFiltersForCountSpecification(productSpecParams);
+
+               var totalItem = await _productRepo.CountAsync(countSpec);
+
+               var products = await _productRepo.ListAsync(spec);
+
+               var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDtos>>(products);
+
+               return Ok(new Pagniation<ProductToReturnDtos>(productSpecParams.PageIndex, productSpecParams.PageSize, totalItem, data));
+        }
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductToReturnDtos>> GetProduct(int id)
@@ -39,15 +56,6 @@ namespace Infrastructure.Controllers
             return _mapper.Map<Product, ProductToReturnDtos>(product);
 
         }
-
-        [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductToReturnDtos>>> GetProducts()
-        {
-               var spec = new ProductWithTypesAndBrandsSpecification();
-               var products = await _productRepo.ListAsync(spec);
-               return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDtos>>(products));
-        }
-
 
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
