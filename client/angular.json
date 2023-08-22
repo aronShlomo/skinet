@@ -35,7 +35,8 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "production": 
+            {
               "budgets": [
                 {
                   "type": "initial",
@@ -73,6 +74,7 @@
 
           "configurations": {
             "production": {
+              
               "browserTarget": "client:build:production"
             },
             "development": {
