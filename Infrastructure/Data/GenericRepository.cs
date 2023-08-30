@@ -16,7 +16,7 @@ namespace Infrastructure.Data
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _context.Set<T>().FindAsync();
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public async Task<T> GetEntityWithSpec(ISpecification<T> spec)

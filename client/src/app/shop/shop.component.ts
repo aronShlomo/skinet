@@ -17,7 +17,7 @@ constructor(private shopServise: ShopService){}
   ngOnInit(): void {
      this.shopServise.getProduct().subscribe(
       {
-        next: response => console.log(response),
+        next: response => this.product = response.data,
         error: error => console.log(error)
       });
   }

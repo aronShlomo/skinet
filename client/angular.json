@@ -35,8 +35,7 @@
             "scripts": []
           },
           "configurations": {
-            "production": 
-            {
+            "production":{
               "budgets": [
                 {
                   "type": "initial",
@@ -51,6 +50,8 @@
               ],
               "outputHashing": "all"
             },
+           
+            
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -80,6 +81,7 @@
             "development": {
               "browserTarget": "client:build:development"
             }
+            
           },
           "defaultConfiguration": "development"
         },
