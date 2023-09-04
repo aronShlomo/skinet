@@ -1,0 +1,14 @@
+<div class="row"  *ngIf="product">
+        <div class="col-4" >
+        <img width="150px" height="150px" src="{{product.pictureUrl}}" alt="{{product.name}} w-100">
+        </div>
+
+    <div class="col-6 mt-4 ">
+        <h2>{{product.name}}</h2>
+
+        <div class="row mt-4">
+        <p>{{product.description}}</p>
+        </div>
+    </div>
+
+</div>
