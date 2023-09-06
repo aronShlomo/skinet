@@ -21,7 +21,9 @@ import { HomeModule } from './home/home.module';
     HomeModule
     
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { Product } from '../shared/models/product';
 import { Brands } from '../shared/models/brands';
 import { Types } from '../shared/models/types';
 import { ShopParams } from '../shared/models/shopParams';
+import {CarouselModule} from 'ngx-bootstrap/carousel';
 
 @Component({
   selector: 'app-shop',
@@ -25,7 +26,7 @@ constructor(private shopServise: ShopService){}
   ngOnInit(): void {
     this.getProducts();
     this.getBrands();
-    this.getTypes();
+    this.getTypes();    
   }
 
 
@@ -43,14 +44,14 @@ constructor(private shopServise: ShopService){}
 
   getBrands(){
     this.shopServise.getBrands().subscribe({
-        next: response => this.brands = [{id: 0, name: 'All'}, ...response],
+        next: response => this.brands = response,
         error: error => console.log(error)
       });
   }
 
   getTypes(){
     this.shopServise.getTypes().subscribe({
-        next: response => this.types = [{id: 0, name: 'All'}, ...response],
+        next: response => this.types = response,
         error: error => console.log(error)
       });
   }

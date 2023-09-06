@@ -29,7 +29,7 @@ export class ShopService {
   }
 
   getProductId(id: number){
-       return  this.http.get<Product>(this.baseUrl + "product/" + id )
+       return  this.http.get<Product>(this.baseUrl + "product/" + id );
   }
 
   getBrands(){
